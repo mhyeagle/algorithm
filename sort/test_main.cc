@@ -5,7 +5,10 @@ int main() {
 	//InsertSortTest();
 	//InsertSortShellTest();
 	//ShellSortTest();
-	SelectionSortTest();
+	//SelectionSortTest();
+	//HeapSortTest();
+	//BubbleSortTest();
+	QuickSortTest();
 
 	return 0;
 }

@@ -26,7 +26,13 @@ int SelectionSortTest();
 int HeapSort(int* arr_point, int arr_size);
 int HeapSortTest();
 
+//bubble sort
+int BubbleSort(int* arr_point, int arr_size);
+int BubbleSortTest();
 
+//quick sort
+int QuickSort(int* arr_point, int arr_size);
+int QuickSortTest();
 
 
 
