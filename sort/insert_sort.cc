@@ -1,12 +1,7 @@
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <stdlib.h>
-#include <time.h>
-
-using namespace std;
+#include "sort.h"
 
 //simple insert sort
+//arr_point1 point to source array while arr_point2 point to destination array
 int InsertSort(int* arr_point1, int* arr_point2, int arr_size) {
     int arr_temp[arr_size];
     for(int i = 0; i < arr_size; ++i) {
@@ -34,9 +29,10 @@ int InsertSort(int* arr_point1, int* arr_point2, int arr_size) {
     return 0;
 }
 
+
 //output array
-void OutputArray(int* arr_point, int arr_size) {
-    cout << "*********************" << endl;
+void OutputArray(int* arr_point, int arr_size, string message = "") {
+	cout << "---------------" << message << "--------------" << endl;
     for(int i = 0; i < arr_size; ++i) {
         cout << *(arr_point+i) << "\t";
     }
@@ -44,7 +40,7 @@ void OutputArray(int* arr_point, int arr_size) {
 }
 
 //test
-int main() {
+int InsertSortTest() {
     srand(time(NULL));
 
     int array_original[15];
