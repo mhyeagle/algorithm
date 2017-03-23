@@ -51,21 +51,25 @@ int MinHeap<T>::heap_adjust_down(unsigned long size) {
         if (2*i+2 > size && 2*i+1 > size) {
             return 0;
         }
-        if (2*i+2 > size && 2*i+1 <= size) {
-            if ((*heap__)[i] < (*heap__)[2*i+1]) {
+        if (2*i+2 > size && 2*i+1 == size) {
+            if ((*heap__)[i] > (*heap__)[2*i+1]) {
                 swap(i, 2*i+1);
             }
             return 0;
         }
-        if (2*i+2 <= size && 2*i+1 <= size) {
+        if (2*i+2 <= size && 2*i+1 < size) {
             unsigned long sub;
-            if ((*heap__)[2*i+1] < (*heap__)[2*i+2]) {
+            if ((*heap__)[2*i+1] > (*heap__)[2*i+2]) {
                 sub = 2*i+1;
             } else {
                 sub = 2*i+2;
             }
-            swap(i, sub);
-            i = sub;
+			if ((*heap__)[i] > (*heap__)[sub]) {
+            	swap(i, sub);
+            	i = sub;
+			} else {
+				return 0;
+			}
         }
     }
 }
@@ -87,6 +91,8 @@ int MinHeap<T>::heap_adjust_up(unsigned long size) {
             return 0;
         }
     }
+
+	return 0;
 }
 
 template<class T>

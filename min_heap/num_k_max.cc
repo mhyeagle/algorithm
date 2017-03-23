@@ -29,7 +29,8 @@ int main() {
 
     cout << "********" << endl;
     int min_num = 0;
-    cout << heap.pop_min(min_num) << endl;
+	heap.pop_min(min_num);
+    cout << min_num << endl;
 
     return 0;
 }
