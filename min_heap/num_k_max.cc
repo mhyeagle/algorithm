@@ -2,20 +2,18 @@
 #include <string>
 #include <cstdlib>
 
+#include "min_heap.h"
+
 using namespace std;
 
-
-
-
-
-
 int main() {
-    int arr[10000];
-    int seed = time();
+    int arr[1000];
+    int seed = time(NULL);
     srand(seed);
 
-    for(int i = 0; i < 10000; ++i) {
+    for(int i = 0; i < 1000; ++i) {
         arr[i] = rand() % 100000;
+        cout << arr[i] << endl;
     }
 
     int max_k[20];
@@ -23,7 +21,15 @@ int main() {
         max_k[i] = 0;
     }
 
-    
+    MinHeap<int> heap;
+    heap.reserve(20);
+    for(int i = 0; i < 1000; ++i) {
+        heap.push(arr[i]);
+    }
+
+    cout << "********" << endl;
+    int min_num = 0;
+    cout << heap.pop_min(min_num) << endl;
 
     return 0;
 }
