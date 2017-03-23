@@ -109,7 +109,7 @@ int MinHeap<T>::push(T& element) {
             }
         }
     } else {
-        std::cout << "heap size > size__" << endl;
+        std::cout << "heap size > size__" << std::endl;
     }
 
     return ret;
