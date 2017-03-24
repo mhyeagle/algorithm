@@ -15,6 +15,7 @@ public:
     int reserve(unsigned long size);
     int push(T& element);
     int pop_min(T& element);
+    void output();
 private:
     int heap_adjust_down(unsigned long size);
     int heap_adjust_up(unsigned long size);
@@ -33,6 +34,13 @@ void MinHeap<T>::swap(unsigned long sub1, unsigned long sub2) {
 }
 
 template<class T>
+void MinHeap<T>::output() {
+    for(int i = 0; i < size__; ++i) {
+        std::cout << (*heap__)[i] << std::endl;
+    }
+}
+
+template<class T>
 int MinHeap<T>::reserve(unsigned long size) {
     if (size > 0)
         heap__->reserve(size);
@@ -42,22 +50,23 @@ int MinHeap<T>::reserve(unsigned long size) {
 }
 
 template<class T>
-int MinHeap<T>::heap_adjust_down(unsigned long size) {
-    if (size < 0 || size > size__) {
+int MinHeap<T>::heap_adjust_down(unsigned long subscript) {
+    if (subscript < 0 || subscript >= size__) {
+        std::cout << "heap_adjust_down input error, value: " << subscript << " subscript__: " << size__ << std::endl;
         return -1;
     }
 
-    for(unsigned long i = 0; i < size; ) {
-        if (2*i+1 > size) {
+    for(unsigned long i = 0; i <= subscript; ) {
+        if (2*i+1 > subscript) {
             return 0;
         }
-        if (2*i+2 > size && 2*i+1 == size) {
+        if (2*i+2 > subscript && 2*i+1 == subscript) {
             if ((*heap__)[i] > (*heap__)[2*i+1]) {
                 swap(i, 2*i+1);
             }
             return 0;
         }
-        if (2*i+2 <= size && 2*i+1 < size) {
+        if (2*i+2 <= subscript && 2*i+1 < subscript) {
             unsigned long sub;
             if ((*heap__)[2*i+1] < (*heap__)[2*i+2]) {
                 sub = 2*i+1;
@@ -108,7 +117,7 @@ int MinHeap<T>::push(T& element) {
     } else if (heap__->size() == size__) {
         if (element > (*heap__)[0]) {
             (*heap__)[0] = element;
-            ret = heap_adjust_down(size__);
+            ret = heap_adjust_down(size__-1);
             if (ret) {
                 std::cout << "heap_adjust_down failed." << std::endl;
                 return -1;

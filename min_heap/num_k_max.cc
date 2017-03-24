@@ -12,25 +12,18 @@ int main() {
     srand(seed);
 
     for(int i = 0; i < 1000; ++i) {
-        arr[i] = rand() % 100000;
+        arr[i] = rand()%10000;
         cout << arr[i] << endl;
     }
 
-    int max_k[20];
-    for(int i = 0; i < 20; ++i) {
-        max_k[i] = 0;
-    }
-
     MinHeap<int> heap;
-    heap.reserve(20);
+    heap.reserve(5);
     for(int i = 0; i < 1000; ++i) {
         heap.push(arr[i]);
     }
 
     cout << "********" << endl;
-    int min_num = 0;
-	heap.pop_min(min_num);
-    cout << min_num << endl;
+    heap.output();
 
     return 0;
 }
