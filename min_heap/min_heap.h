@@ -48,7 +48,7 @@ int MinHeap<T>::heap_adjust_down(unsigned long size) {
     }
 
     for(unsigned long i = 0; i < size; ) {
-        if (2*i+2 > size && 2*i+1 > size) {
+        if (2*i+1 > size) {
             return 0;
         }
         if (2*i+2 > size && 2*i+1 == size) {
@@ -59,7 +59,7 @@ int MinHeap<T>::heap_adjust_down(unsigned long size) {
         }
         if (2*i+2 <= size && 2*i+1 < size) {
             unsigned long sub;
-            if ((*heap__)[2*i+1] > (*heap__)[2*i+2]) {
+            if ((*heap__)[2*i+1] < (*heap__)[2*i+2]) {
                 sub = 2*i+1;
             } else {
                 sub = 2*i+2;
